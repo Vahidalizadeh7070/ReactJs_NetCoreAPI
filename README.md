@@ -18,4 +18,6 @@ The management section is a dashboard that admin can manage all informations in 
 
 <h5>Packages in used</h5>
 All packages that we have used in our application is: 
--
+- WebApi.Client : <code>Install-Package Microsoft.AspNet.WebApi.Client -Version 5.2.7</code>
+- 
+- 
