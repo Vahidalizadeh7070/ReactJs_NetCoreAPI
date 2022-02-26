@@ -1,4 +1,4 @@
-# ReactJs_NetCoreAPI
+# React js & .Net Core API
 This repository contains a front end which is implemented by ReactJS and a back end section which is implemented by .Net core API.
 This example includes three main sections.
 - FrontEnd section which is going to display to user
