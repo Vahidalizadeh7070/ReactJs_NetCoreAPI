@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ManagerGameHub.Models.Category>
+
+@{
+    ViewData["Title"] = "GetAllCategories";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+<div class="shadow">
+    <div class="p-3">
+        <div class="row">
+            <div class="col-md-10 col-sm-6">
+                <h1 class="fw-normal text-dark">Categories</h1>
+                <h3 class="text-secondary fw-light">You can see all categories.</h3>
+                <h5 class="text-secondary fw-light">We use these categories in every section that we'll need.</h5>
+            </div>
+            <div class="col-md-2 col-sm-6 text-end ">
+                <a asp-action="Add" class="btn btn-success btn-sm rounded-circle"><i class="bi bi-plus-lg text-white"></i></a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CategoryName)
+                        </th>
+                        <th>
+                            <i class="bi bi-calendar"></i> @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryName)
+                            </td>
+                            <td>
+                                @item.Date.ToString("dddd, dd MMMM yyyy")
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "text-decoration-none link-warning" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "text-decoration-none link-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

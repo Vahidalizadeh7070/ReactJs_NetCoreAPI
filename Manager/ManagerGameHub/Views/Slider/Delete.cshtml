@@ -1,0 +1,46 @@
+﻿@model ManagerGameHub.Models.Slider
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-10 col-sm-6">
+        <h1 class="fw-normal text-dark">Delete Slider</h1>
+        <h3 class="text-secondary fw-light">You can Delete images in slider with other informations</h3>
+    </div>
+    <div class="col-md-2 col-sm-6 text-end ">
+        <a asp-action="GetAllSliders" class="btn btn-light shadow btn-sm rounded-circle"><i class="bi bi-arrow-left"></i></a>
+    </div>
+</div>
+<hr />
+<div class="shadow">
+    <div class="p-5">
+        <div class="col-md-8 offset-md-2 ">
+            <img src="https://localhost:44352/SliderImages/@Model.Image" class="img-fluid shadow rounded-3" />
+        </div>
+        <hr />
+        <div class="row lh-lg">
+            <div class="col-md-4">
+                <label class="fw-bold text-black">Caption</label>
+                <p>@Html.DisplayFor(model => model.Caption)</p>
+            </div>
+            <div class="col-md-4">
+                <label class="fw-bold text-black">About</label>
+                <p>@Html.DisplayFor(model => model.About)</p>
+            </div>
+            <div class="col-md-4">
+                <label class="fw-bold text-black">Link</label>
+                <p><a href="@Model.Link" class="link-danger text-decoration-none">Source</a></p>
+            </div>
+        </div>
+
+        <form asp-action="Delete">
+            <div class="form-group text-end">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Delete slider" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>
+

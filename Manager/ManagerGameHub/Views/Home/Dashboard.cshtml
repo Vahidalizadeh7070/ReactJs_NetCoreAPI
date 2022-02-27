@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+    var userName = Context.Request.Cookies["Username"];
+}
+
+<main class="form-signin mt-5">
+    <div class="col-md-7 offset-md-3 shadow">
+        <div class="p-5">
+            <div class="pb-5 pt-5 text-center">
+                <h1 class="fw-lighter text-dark display-2">Welcome @userName.</h1>
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="btn btn-lg btn-danger shadow rounded-3" asp-action="GetAllNews" asp-controller="News">News</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-lg btn-warning text-white shadow rounded-3" asp-action="GetAllCategories" asp-controller="Category">Category</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-lg btn-info text-white shadow rounded-3" asp-action="GetAllSliders" asp-controller="Slider">Slider</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

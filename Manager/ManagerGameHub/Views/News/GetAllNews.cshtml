@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ManagerGameHub.Models.News>
+
+@{
+    ViewData["Title"] = "GetAllNews";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<div class="shadow">
+    <div class="p-3">
+        <div class="row">
+            <div class="col-md-10 col-sm-6">
+                <h1 class="fw-normal text-dark">News</h1>
+                <h3 class="text-secondary fw-light">You can see all the news in with their categories</h3>
+            </div>
+            <div class="col-md-2 col-sm-6 text-end ">
+                <a asp-action="Add" class="btn btn-success btn-sm rounded-circle"><i class="bi bi-plus-lg text-white"></i></a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImageOne)
+                        </th>
+                        <th>
+                            <label>Category</label>
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Source)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Trend)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td class="col-md-2">
+                                <img src="https://localhost:44352/News/@item.ImageOne" class="img-fluid shadow rounded-3 shadow" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Categories.CategoryName)
+                            </td>
+                            <td>
+                                <a href="@item.Source" class="text-decoration-none text-info">View source</a>
+                            </td>
+                            <td>
+                                @if (item.Trend)
+                                {
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-x-circle-fill text-danger"></i>
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "text-decoration-none link-warning" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "text-decoration-none link-danger" })
+                               
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "text-decoration-none link-info" }) 
+                             
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model ManagerGameHub.Models.Slider
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-10 col-sm-6">
+        <h1 class="fw-normal text-dark">Add Slider</h1>
+        <h3 class="text-secondary fw-light">You can Add images in slider with other informations</h3>
+    </div>
+    <div class="col-md-2 col-sm-6 text-end ">
+        <a asp-action="GetAllSliders" class="btn btn-light shadow btn-sm rounded-circle"><i class="bi bi-arrow-left"></i></a>
+    </div>
+</div>
+<hr />
+<div class="shadow col-md-6 offset-md-3">
+    <div class="p-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group pb-3">
+                <label asp-for="ImageFile" class="control-label custom-file-label"></label>
+                <div class="custom-file">
+                    <input asp-for="ImageFile" id="imageFile" class="form-control custom-file-input" />
+                    <p class="text-danger">@ViewBag.FileMessage</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Caption" class="control-label"></label>
+                <input asp-for="Caption" id="caption" class="form-control" />
+                <span asp-validation-for="Caption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="About" class="control-label"></label>
+                <input asp-for="About" id="about" class="form-control" />
+                <span asp-validation-for="About" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Link" class="control-label"></label>
+                <input asp-for="Link" id="link" class="form-control" />
+                <span asp-validation-for="Link" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-3 pb-3 text-end">
+                <input type="submit" id="btnSave" value="Create new" class="btn btn-primary shadow" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+
+                var data = new FormData();
+                var caption = $('#caption').val();
+                var about = $('#About').val();
+                var link = $('#Link').val();
+                data.append("caption", caption, "about", about, "link", link);
+
+                var files = $('#imageFile')[0].files;;
+                for (var i = 0; i < files.length; i++) {
+                    data.append("file", files[i]);
+                }
+                $.ajax({
+                    url: 'https://localhost:44352/Dashboard/api/ManagerSlider',
+                    type: "post",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                });
+            });
+        });
+    </script>
+}

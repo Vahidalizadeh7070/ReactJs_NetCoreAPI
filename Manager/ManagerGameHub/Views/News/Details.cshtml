@@ -1,0 +1,92 @@
+﻿@model ManagerGameHub.Models.News
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-10 col-sm-6">
+        <h1 class="fw-normal text-dark">Details</h1>
+        <h3 class="fw-light text-secondary">You can see all the details of @Model.Title</h3>
+    </div>
+    <div class="col-md-2 col-sm-6 text-end ">
+        <a asp-action="GetAllNews" class="btn btn-light shadow btn-sm rounded-circle"><i class="bi bi-arrow-left"></i></a>
+    </div>
+</div>
+<hr />
+<div class="shadow">
+    <div class="p-5">
+        <div class="col-md-8 offset-md-2 ">
+            <img src="https://localhost:44352/News/@Model.ImageOne" class="img-fluid shadow rounded-3" />
+        </div>
+        <hr />
+        <div class="row lh-lg">
+            <div class="col-md-6">
+                <label class="fw-bold text-black">Title</label>
+                <p>@Html.DisplayFor(model => model.Title)</p>
+            </div>
+            <div class="col-md-6">
+                <label class="fw-bold text-black">About</label>
+                <p>@Html.DisplayFor(model => model.About)</p>
+            </div>
+        </div>
+        <div class="row lh-lg">
+            <div class="col-md-12">
+                <label class="fw-bold text-black">Description one</label>
+                <p>@Html.DisplayFor(model => model.DescriptionOne)</p>
+            </div>
+        </div>
+            <div class="col-md-6 offset-md-3">
+                <img src="https://localhost:44352/News/@Model.ImageTwo" class="img-fluid shadow rounded-3" />
+            </div>
+        <hr />
+        <div class="row lh-lg">
+            <div class="col-md-12">
+                <label class="fw-bold text-black">Description two</label>
+                <p>@Html.DisplayFor(model => model.DescriptionTwo)</p>
+            </div>
+        </div>
+        <div class="col-md-6 offset-md-3">
+                <img src="https://localhost:44352/News/@Model.ImageThree" class="img-fluid shadow rounded-3" />
+            </div>
+        <hr />
+        <div class="row lh-lg">
+            <div class="col-md-12">
+                <label class="fw-bold text-black">Description three</label>
+                <p>@Html.DisplayFor(model => model.DescriptionThree)</p>
+            </div>
+        </div>
+        <div class="row lh-lg">
+            <div class="col-md-4">
+                <label class="fw-bold text-black">Date</label>
+                <p>@Model.Date.ToString("dddd, dd MMMM yyyy")</p>
+            </div>
+            <div class="col-md-4">
+                <label class="fw-bold text-black">Category</label>
+                <p>@Model.Categories.CategoryName</p>
+            </div>
+            <div class="col-md-4">
+                <label class="fw-bold text-black">Video url</label>
+                <p>@Model.VideoUrl</p>
+            </div>
+        </div>
+        <div class="row lh-lg">
+            <div class="col-md-6">
+                <label class="fw-bold text-black">Source</label>
+                <p><a class="text-decoration-none link-info" href="@Model.Source">View source</a></p>
+            </div>
+            <div class="col-md-6">
+                <label class="fw-bold text-black">Trend</label>
+                @if (Model.Trend)
+                {
+                    <p><i class="bi bi-check-circle-fill text-success"></i></p>
+                }
+                else
+                {
+                    <p><i class="bi bi-x-circle-fill text-danger"></i></p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model ManagerGameHub.Models.Category
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-10 col-sm-6">
+        <h1 class="fw-normal text-dark">Delete Category</h1>
+        <h3 class="text-secondary fw-light">You can Delete all categories</h3>
+    </div>
+    <div class="col-md-2 col-sm-6 text-end ">
+        <a asp-action="GetAllCategories" class="btn btn-light shadow btn-sm rounded-circle"><i class="bi bi-arrow-left"></i></a>
+    </div>
+</div>
+<hr />
+<div class="shadow">
+    <div class="p-5">
+        <div class="row lh-lg">
+            <div class="col-md-4">
+                <label class="fw-bold text-black">Caption</label>
+                <p>@Html.DisplayFor(model => model.CategoryName)</p>
+            </div>
+            <div class="col-md-4">
+                <label class="fw-bold text-black">About</label>
+                <p>@Html.DisplayFor(model => model.Date)</p>
+            </div>
+        </div>
+
+        <form asp-action="Delete">
+            <div class="form-group text-end">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Delete category" class="btn btn-danger shadow" />
+            </div>
+        </form>
+    </div>
+</div>
+

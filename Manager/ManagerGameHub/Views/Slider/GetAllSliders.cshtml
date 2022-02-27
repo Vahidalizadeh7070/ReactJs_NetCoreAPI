@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ManagerGameHub.Models.Slider>
+
+@{
+    ViewData["Title"] = "GetAllSliders";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+<div class="shadow">
+    <div class="p-3">
+        <div class="row">
+            <div class="col-md-10 col-sm-6">
+                <h1 class="fw-normal text-dark">Sliders</h1>
+                <h3 class="text-secondary fw-light">You can see all the images in slider with other informations</h3>
+            </div>
+            <div class="col-md-2 col-sm-6 text-end ">
+                <a asp-action="Add" class="btn btn-success btn-sm rounded-circle"><i class="bi bi-plus-lg text-white"></i></a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Caption)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Link)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="col-md-5">
+                                <img src="https://localhost:44352/SliderImages/@item.Image" class="img-fluid shadow rounded-3 shadow"  />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Caption)
+                            </td>
+                            <td>
+                                <a class="text-decoration-none link-info" href="@item.Link">Link</a>
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class= "text-decoration-none link-warning" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "text-decoration-none link-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
