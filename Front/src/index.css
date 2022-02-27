@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slider-box{
+  opacity: 0.5;
+  background-color: #a1a1a1;
+  border-radius: 10px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.spinner-size
+{
+  width: 8rem; height: 8rem;
+}
+.dropdownheight
+{
+  height: calc(3.5rem + 2px);
+}
